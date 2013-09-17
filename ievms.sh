@@ -20,9 +20,9 @@ curl_opts=${CURL_OPTS:-""}
 # name, url, archive, md5
 download() {
     if [[ -f "${3}" && `md5 -q ${3}` == ${4} ]]; then
-        echo "Found ${1} at ${3} - skipping download"
+        echo "1. Found ${1} at ${3} - skipping download"
     else
-        echo "Downloading ${1} from ${2}"
+        echo "1. Downloading ${1} from ${2}"
         curl ${curl_opts} -O "${2}" || fail "Failed to download ${2} to ${ievms_home}/${3} using 'curl', error code ($?)"
     fi
 }
@@ -32,9 +32,9 @@ extract() {
     vm="${1}.vmwarevm"
     sfx="${1}${2}.sfx"
     if [[ -a "${vm}" ]]; then
-        echo "Found ${vm} - skipping extraction"
+        echo "2. Found ${vm} - skipping extraction"
     else
-        echo "Extracting ${sfx} to ${vm}"
+        echo "2. Extracting ${sfx} to ${vm}"
         # Allow file to be executable
         chmod +x ${sfx}
         
