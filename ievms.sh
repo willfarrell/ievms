@@ -18,12 +18,19 @@ curl_opts=${CURL_OPTS:-""}
 
 # Download a URL to a local file. Accepts a name, URL and file.
 # name, url, archive, md5
+md5retry=5
 download() {
     if [[ -f "${3}" && `md5 -q ${3}` == ${4} ]]; then
         echo "1. Found ${1} at ${3} - skipping download"
     else
         echo "1. Downloading ${1} from ${2}"
         curl ${curl_opts} -O "${2}" || fail "Failed to download ${2} to ${ievms_home}/${3} using 'curl', error code ($?)"
+    fi
+    
+    if [[ `md5 -q ${3}` == ${4} && ${md5retry} ]]; then
+        md5retry--
+        echo "MD5 Hash failed, trying to download again (${md5retry} retries left)"
+        download ${1} ${2} ${3} ${4}
     fi
 }
 
@@ -181,7 +188,7 @@ create_home
 all_versions="6 7 8 9 10 11"
 for ver in ${IEVMS_VERSIONS:-$all_versions}
 do
-    echo "\nBuilding IE${ver} VM ----------------------"
+    echo "Building IE${ver} VM ----------------------"
     build_ievm $ver "ALL"
 done
 

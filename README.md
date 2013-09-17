@@ -4,11 +4,7 @@ Overview
 ========
 
 Microsoft provides virtual machine disk images to facilitate website testing 
-in multiple versions of IE, regardless of the host operating system. 
-~~Unfortunately, setting these virtual machines up without Microsoft's VirtualPC
-can be extremely difficult. The ievms scripts aim to facilitate that process using
-VirtualBox on Linux or OS X.~~ With a single command, you can have IE6, IE7, IE8,
-IE9, IE10 and IE11 running in separate virtual machines. 
+in multiple versions of IE, regardless of the host operating system. With a single command, you can have IE6, IE7, IE8, IE9, IE10 and IE11 running in separate virtual machines. 
 
 **NOTE:** As of Feb. 1st, 2013, the [MS images](http://www.modern.ie/virtualization-tools)
 are fully compatible with VMWare Fusion, thanks to the [modern.IE](http://modern.IE)
@@ -26,7 +22,6 @@ Requirements
 
 * VMWare Fusion (http://www.vmware.com/products/fusion/)
 * Curl (Ubuntu: `sudo apt-get install curl`)
-* Linux Only: unar (Ubuntu: `sudo apt-get install unar`)
 * Patience
 
 
@@ -35,7 +30,7 @@ Disk requirements
 
 A full ievms install will require approximately 48G:
 
-    Servo:.ievms xdissent$ du -ch *
+    $ du -ch *
      11G    IE10 - Win7-disk1.vmdk
      22M    IE10-Windows6.1-x86-en-us.exe
      11G    IE11 - Win7-disk1.vmdk
@@ -50,10 +45,6 @@ A full ievms install will require approximately 48G:
      11G    IE9 - Win7-disk1.vmdk
     4.7G    IE9 - Win7.ova
     4.7G    IE9_Win7.zip
-    3.4M    ievms-control-0.1.0.iso
-    4.6M    lsar
-    4.5M    unar
-    4.1M    unar1.5.zip
      48G    total
    
 You may remove all files except `*.vmdk` after installation and they will be
@@ -63,7 +54,7 @@ re-downloaded if ievms is run again in the future:
 
 If all installation related files are removed, around 37G is required:
 
-    Servo:.ievms xdissent$ du -ch *
+    $ du -ch *
      11G    IE10 - Win7-disk1.vmdk
      11G    IE11 - Win7-disk1.vmdk
     1.5G    IE6 - WinXP-disk1.vmdk
@@ -78,18 +69,11 @@ Bandwidth requirements
 
 A full installation will download roughly 7.5G of data.
 
-**NOTE:** Reusing the XP VM for IE7 and IE8 (the default) saves an incredible
-amount of space and bandwidth. If it is disabled (`REUSE_XP=no`) the disk space
-required climbs to 74G (39G if cleaned post-install) and around 17G will be 
-downloaded. Reusing the Win7 VM on the other hand (also the default), saves
-tons of bandwidth but pretty much breaks even on disk space. Disable it with 
-`REUSE_WIN7=no`.
-
 
 Installation
 ============
 
-1. Install VirtualBox (make sure command line utilities are selected and installed).
+1. Install VMWare Fusion (make sure command line utilities are selected and installed).
 
 2. Download and unpack ievms:
 
@@ -105,27 +89,17 @@ Installation
 
 4. Choose ievms image from VMWare Fusion.
 
-The OVA images are massive and can take hours or tens of minutes to 
+The vmwarevm images are massive and can take hours or tens of minutes to 
 download, depending on the speed of your internet connection. You might want
-to start the install and then go catch a movie, or maybe dinner, or both. 
+to start the install and then go catch a power nap, or start a new project, or both. 
 
 
 Recovering from a failed installation
 -------------------------------------
 
-Each version is installed into `~/.ievms/` (or `INSTALL_PATH`). If the installation fails
-for any reason (corrupted download, for instance), delete the appropriate ZIP/ova file
-and rerun the install.
+Each version is installed into `~/Virtual Machines/`. If the installation fails for any reason (corrupted download, for instance), just rerun the script. 
 
-If nothing else, you can delete `~/.ievms` (or `INSTALL_PATH`) and rerun the install.
-
-
-Specifying the install path
----------------------------
-
-To specify where the VMs are installed, use the `INSTALL_PATH` variable:
-
-    curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | env INSTALL_PATH="/Path/to/.ievms" bash
+If nothing else, you can delete `~/Virtual Machines` and rerun the install.
 
 
 Passing additional options to curl
@@ -134,7 +108,7 @@ Passing additional options to curl
 The `curl` command is passed any options present in the `CURL_OPTS` 
 environment variable. For example, you can set a download speed limit:
 
-    curl -s https://raw.github.com/xdissent/ievms/master/ievms.sh | env CURL_OPTS="--limit-rate 50k" bash
+    curl -s https://raw.github.com/willfarrell/ievms/master/ievms.sh | env CURL_OPTS="--limit-rate 50k" bash
 
 
 Features
@@ -162,9 +136,7 @@ guest control from the host machine.
 Resuming Downloads
 ------------------
 
-~~If one of the comically large files fails to download, the `curl` 
-command used will automatically attempt to resume where it left off.~~
-Unfortunately, the modern.IE download servers do not support resume.
+Unfortunately, the modern.IE download servers do not support resume. The script will only redownload any files that do not match their md5 hash.
 
 
 Acknowledgements
