@@ -28,46 +28,72 @@ Requirements
 Disk requirements
 -----------------
 
-A full ievms install will require approximately 48G:
+A full ievms install will require approximately 83G:
 
-    $ du -ch *
-     11G    IE10 - Win7-disk1.vmdk
-     22M    IE10-Windows6.1-x86-en-us.exe
-     11G    IE11 - Win7-disk1.vmdk
-     28M    IE11-Windows6.1-x86-en-us.exe
-    1.5G    IE6 - WinXP-disk1.vmdk
-    724M    IE6 - WinXP.ova
-    717M    IE6_WinXP.zip
-    1.6G    IE7 - WinXP-disk1.vmdk
-     15M    IE7-WindowsXP-x86-enu.exe
-    1.6G    IE8 - WinXP-disk1.vmdk
-     16M    IE8-WindowsXP-x86-ENU.exe
-     11G    IE9 - Win7-disk1.vmdk
-    4.7G    IE9 - Win7.ova
-    4.7G    IE9_Win7.zip
-     48G    total
-   
-You may remove all files except `*.vmdk` after installation and they will be
-re-downloaded if ievms is run again in the future:
+```bash
+$ du -chd 0 *
+977M	IE10.Win7.For.MacVMware.part01.sfx
+977M	IE10.Win7.For.MacVMware.part02.rar
+977M	IE10.Win7.For.MacVMware.part03.rar
+274M	IE10.Win7.For.MacVMware.part04.rar
+9.1G	IE10.Win7.For.MacVMware.vmwarevm
+977M	IE10.Win8.For.MacVMware.part1.sfx
+977M	IE10.Win8.For.MacVMware.part2.rar
+457M	IE10.Win8.For.MacVMware.part3.rar
+7.3G	IE10.Win8.For.MacVMware.vmwarevm
+977M	IE11.Win7.For.MacVMware.part01.sfx
+977M	IE11.Win7.For.MacVMware.part02.rar
+977M	IE11.Win7.For.MacVMware.part03.rar
+301M	IE11.Win7.For.MacVMware.part04.rar
+9.2G	IE11.Win7.For.MacVMware.vmwarevm
+977M	IE11.Win8.1Preview.For.MacVMware.part1.sfx
+977M	IE11.Win8.1Preview.For.MacVMware.part2.rar
+259M	IE11.Win8.1Preview.For.MacVMware.part3.rar
+5.5G	IE11.Win8.1Preview.For.MacVMware.vmwarevm
+699M	IE6.XP.For.MacVMware.sfx
+1.6G	IE6.XP.For.MacVMware.vmwarevm
+977M	IE7.Vista.For.MacVMware.part01.sfx
+977M	IE7.Vista.For.MacVMware.part02.rar
+977M	IE7.Vista.For.MacVMware.part03.rar
+217M	IE7.Vista.For.MacVMware.part04.rar
+ 11G	IE7.Vista.For.MacVMware.vmwarevm
+977M	IE8.Win7.For.MacVMware.part01.sfx
+977M	IE8.Win7.For.MacVMware.part02.rar
+790M	IE8.Win7.For.MacVMware.part03.rar
+8.4G	IE8.Win7.For.MacVMware.vmwarevm
+864M	IE8.XP.For.MacVMware.sfx
+1.9G	IE8.XP.For.MacVMware.vmwarevm
+977M	IE9.Win7.For.MacVMware.part01.sfx
+977M	IE9.Win7.For.MacVMware.part02.rar
+868M	IE9.Win7.For.MacVMware.part03.rar
+8.7G	IE9.Win7.For.MacVMware.vmwarevm
+ 83G	total
+```
 
-    $ find ~/.ievms -type f ! -name "*.vmdk" -exec rm {} \;
+You may remove all files except `*.vmwarevm` after installation and they will be
+re-downloaded if ievms is run again in the future.
 
-If all installation related files are removed, around 37G is required:
+If all installation related files are removed, around 62G is required:
 
-    $ du -ch *
-     11G    IE10 - Win7-disk1.vmdk
-     11G    IE11 - Win7-disk1.vmdk
-    1.5G    IE6 - WinXP-disk1.vmdk
-    1.6G    IE7 - WinXP-disk1.vmdk
-    1.6G    IE8 - WinXP-disk1.vmdk
-     11G    IE9 - Win7-disk1.vmdk
-     37G    total
+```bash
+$ du -chd 0 *
+9.1G	IE10.Win7.For.MacVMware.vmwarevm
+7.3G	IE10.Win8.For.MacVMware.vmwarevm
+9.2G	IE11.Win7.For.MacVMware.vmwarevm
+5.5G	IE11.Win8.1Preview.For.MacVMware.vmwarevm
+1.6G	IE6.XP.For.MacVMware.vmwarevm
+ 11G	IE7.Vista.For.MacVMware.vmwarevm
+8.4G	IE8.Win7.For.MacVMware.vmwarevm
+1.9G	IE8.XP.For.MacVMware.vmwarevm
+8.7G	IE9.Win7.For.MacVMware.vmwarevm
+ 62G	total
+```
 
 
 Bandwidth requirements
 ----------------------
 
-A full installation will download roughly 7.5G of data.
+A full installation will download roughly 21G of data.
 
 
 Installation
