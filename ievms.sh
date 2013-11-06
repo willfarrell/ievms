@@ -27,11 +27,11 @@ download() {
         curl ${curl_opts} -O "${2}" || fail "Failed to download ${2} to ${ievms_home}/${3} using 'curl', error code ($?)"
     fi
     
-    if [[ `md5 -q ${3}` == ${4} && ${md5retry} ]]; then
-        md5retry--
-        echo "MD5 Hash failed, trying to download again (${md5retry} retries left)"
-        download ${1} ${2} ${3} ${4}
-    fi
+    #if [[ `md5 -q ${3}` == ${4} && "$md5retry" -gt 0 ]]; then
+    #    let "md5retry-=1"
+    #    echo "MD5 Hash failed, trying to download again (${md5retry} retries left)"
+    #    download ${1} ${2} ${3} ${4}
+    #fi
 }
 
 # name (${file})
