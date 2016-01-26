@@ -14,7 +14,7 @@ project.
 Quickstart
 ==========
 
-Just paste this into a terminal: `curl -s https://raw.github.com/willfarrell/ievms/master/ievms.sh | bash`
+Just paste this into a terminal: `curl -s https://raw.githubusercontent.com/willfarrell/ievms/master/ievms.sh | bash`
 
 
 Requirements
@@ -105,11 +105,11 @@ Installation
 
    * Install IE versions 6, 7, 8, 9, 10 and 11.
 
-        curl -s https://raw.github.com/willfarrell/ievms/master/ievms.sh | bash
+        curl -s https://raw.githubusercontent.com/willfarrell/ievms/master/ievms.sh | bash
 
    * Install specific IE versions (IE7 and IE9 only for example):
 
-        curl -s https://raw.github.com/willfarrell/ievms/master/ievms.sh | env IEVMS_VERSIONS="7 9" bash
+        curl -s https://raw.githubusercontent.com/willfarrell/ievms/master/ievms.sh | env IEVMS_VERSIONS="7 9" bash
 
 3. Launch VMWare Fusion.
 
@@ -134,7 +134,7 @@ Passing additional options to curl
 The `curl` command is passed any options present in the `CURL_OPTS` 
 environment variable. For example, you can set a download speed limit:
 
-    curl -s https://raw.github.com/willfarrell/ievms/master/ievms.sh | env CURL_OPTS="--limit-rate 50k" bash
+    curl -s https://raw.githubusercontent.com/willfarrell/ievms/master/ievms.sh | env CURL_OPTS="--limit-rate 50k" bash
 
 
 Features
